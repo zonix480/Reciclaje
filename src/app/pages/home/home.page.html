@@ -13,20 +13,22 @@
     </ion-card-header>
   
     <ion-card-content>
-      <ion-item>
-        <ion-label position="floating">Correo Electronico</ion-label>
-        <ion-input></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label position="floating">Contraseña</ion-label>
-        <ion-input></ion-input>
-      </ion-item>
-      <ion-button expand="full">Ingresar</ion-button>
+      <form [formGroup]="loginForm" novalidate>
+        <ion-item>
+          <ion-label position="floating">Correo Electronico</ion-label>
+          <ion-input placeholder="Correo Electrónico" type="email" formControlName="email" [class.invalid]="!loginForm.controls.email.valid && loginForm.controls.email.touched"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Contraseña</ion-label>
+          <ion-input placeholder="Contraseña" type="password" formControlName="password" [class.invalid]="!loginForm.controls.password.valid && loginForm.controls.password.touched"></ion-input>
+        </ion-item>
+        <ion-button (click)="loginuser()" expand="full">Ingresar</ion-button>
+      </form>
       <ion-grid>
         <ion-row>
           <ion-col size="2"></ion-col>
           <ion-col size="8">
-            <ion-button expand="full">Registrarme</ion-button>
+            <ion-button routerLink="/register" expand="full">Registrarme</ion-button>
           </ion-col>
           <ion-col size="2"></ion-col>
         </ion-row>

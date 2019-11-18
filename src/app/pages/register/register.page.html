@@ -1,9 +1,72 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>register</ion-title>
+      <ion-buttons slot="start">
+          <ion-back-button></ion-back-button>
+        </ion-buttons>
+    <ion-title text-center>Registro</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
-</ion-content>
+    <ion-card>
+      <ion-card-header text-center>
+        <ion-card-title>Usuario Nuevo</ion-card-title>
+      </ion-card-header>
+      <form [formGroup]="registerForm" novalidate>
+      <ion-card-content>
+        <ion-item>
+          <ion-label position="floating">Nombres</ion-label>
+          <ion-input  type="text" formControlName="name" placeholder="Nombres" [class.invalid]="!registerForm.controls.name.valid && registerForm.controls.name.touched"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Apellidos</ion-label>
+          <ion-input type="text" formControlName="lastname" placeholder="Apellidos" [class.invalid]="!registerForm.controls.lastname.valid && registerForm.controls.lastname.touched"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Cedula</ion-label>
+          <ion-input  type="number" formControlName="identity_number" placeholder="Cedula" [class.invalid]="!registerForm.controls.identity_number.valid && registerForm.controls.identity_number.touched"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Dirección</ion-label>
+          <ion-input type="text" formControlName="address" placeholder="Dirección" [class.invalid]="!registerForm.controls.address.valid && registerForm.controls.address.touched"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Estrato</ion-label>
+          <ion-select formControlName="stratum" [class.invalid]="!registerForm.controls.stratum.valid && registerForm.controls.stratum.touched" placeholder="Selecciona uno ">
+            <ion-select-option value="1">1</ion-select-option>
+            <ion-select-option value="2">2</ion-select-option>
+            <ion-select-option value="3">3</ion-select-option>
+            <ion-select-option value="4">4</ion-select-option>
+            <ion-select-option value="5">5</ion-select-option>
+            <ion-select-option value="6">6</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+            <ion-label position="floating">Rol</ion-label>
+            <ion-select formControlName="rols_id" placeholder="Selecciona uno" [class.invalid]="!registerForm.controls.rols_id.valid && registerForm.controls.rols_id.touched">
+              <ion-select-option value="1">Ecologista</ion-select-option>
+              <ion-select-option value="2">Reciclador</ion-select-option>
+            </ion-select>
+          </ion-item>
+        <ion-item>
+          <ion-label position="floating">Celular</ion-label>
+          <ion-input type="phone" formControlName="phone" placeholder="Celular" [class.invalid]="!registerForm.controls.phone.valid && registerForm.controls.phone.touched"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Correo Electronico</ion-label>
+          <ion-input type="email" formControlName="email" placeholder="Email" [class.invalid]="!registerForm.controls.email.valid && registerForm.controls.email.touched"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Contraseña</ion-label>
+          <ion-input type="password" formControlName="password" placeholder="*********" [class.invalid]="!registerForm.controls.password.valid && registerForm.controls.password.touched"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Repetir Contraseña</ion-label>
+          <ion-input type="password" formControlName="password2" placeholder="*********" [class.invalid]="!registerForm.controls.password2.valid && registerForm.controls.password2.touched"></ion-input>
+        </ion-item>
+        <ion-button (click)="registeruser()" expand="full">Registrar</ion-button>
+      </ion-card-content>
+      </form>
+    </ion-card>
+  </ion-content>
+  

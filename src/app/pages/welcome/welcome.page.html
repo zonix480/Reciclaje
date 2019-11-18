@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title text-center>Bienvenido Ecologista</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+ <!-- fab placed in the center of the content with a list on each side -->
+ <ion-fab vertical="top" horizontal="start" slot="fixed">
+    <ion-fab-button>
+      <ion-icon name="menu"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="end">
+      <ion-fab-button><ion-icon name="person"></ion-icon></ion-fab-button>
+    </ion-fab-list>
+    <ion-fab-list side="bottom">
+      <ion-fab-button><ion-icon name="log-out"></ion-icon></ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
+  <!--SI ES UN ECOLOGISTA-->
+  <ion-card class="mt-card">
+    <ion-item>
+      <ion-icon name="calendar" slot="start"></ion-icon>
+      <ion-label>Agendar Recolección</ion-label>
+      <ion-button fill="outline" slot="end">Ir</ion-button>
+    </ion-item>
+    <ion-card-content>
+      This is content, without any paragraph or header tags,
+      within an ion-card-content element.
+    </ion-card-content>
+  </ion-card>
+  <ion-card >
+    <ion-item>
+      <ion-icon name="time" slot="start"></ion-icon>
+      <ion-label>Reprogramar Recolección</ion-label>
+      <ion-button fill="outline" slot="end">Ir</ion-button>
+    </ion-item>
+    <ion-card-content>
+      This is content, without any paragraph or header tags,
+      within an ion-card-content element.
+    </ion-card-content>
+  </ion-card>
+  <ion-card>
+    <ion-item>
+      <ion-icon name="close" slot="start"></ion-icon>
+      <ion-label>Cancelar Recolección</ion-label>
+      <ion-button fill="outline" slot="end">Ir</ion-button>
+    </ion-item>
+    <ion-card-content>
+      This is content, without any paragraph or header tags,
+      within an ion-card-content element.
+    </ion-card-content>
+  </ion-card>
+
+
+</ion-content>

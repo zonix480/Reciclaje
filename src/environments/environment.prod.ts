@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  BASE_URL: 'http://localhost/reciclaje_api/api/v1',
+  BASE_URL: 'http://localhost:8000/api/v1',
 };
