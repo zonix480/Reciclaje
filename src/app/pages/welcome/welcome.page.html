@@ -69,15 +69,14 @@
        </ion-fab-list>
      </ion-fab>
      <!--SI ES UN ECOLOGISTA-->
-     <ion-card class="mt-card">
+     <ion-card *ngFor="let recycling of recyclings"  class="mt-card">
        <ion-item>
          <ion-icon name="calendar" slot="start"></ion-icon>
-         <ion-label>Agendar Recolección</ion-label>
-         <ion-button fill="outline" slot="end">Ir</ion-button>
+         <ion-label>{{recycling.name}}</ion-label>
+         <ion-button fill="outline" slot="end">Ver</ion-button>
        </ion-item>
        <ion-card-content>
-         This is content, without any paragraph or header tags,
-         within an ion-card-content element.
+        La persona {{recycling.name}} {{recycling.lastname}} esta solicitando un reciclador.
        </ion-card-content>
      </ion-card>
    
