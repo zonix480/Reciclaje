@@ -1,0 +1,29 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="end">
+          <ion-button (click)="close()">
+            <ion-icon name="close-circle-outline"></ion-icon>
+          </ion-button>
+          </ion-buttons>
+      <ion-title class="ion-text-center">Descripción</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <app-google-map></app-google-map>
+  <ion-card>
+    <ion-card-header>
+      Dueño:{{name}} <br>
+      Materiales
+    </ion-card-header>
+    <ion-card-content>
+      <ul>
+        <li *ngFor="let material of materials">{{material.material}}</li>
+      </ul>
+      <h4>Peso Aproximado: {{size}}</h4>
+      <ion-button expand="full" (click)="accept()">
+        Aceptar
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

@@ -13,13 +13,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { GlobalProvider } from '../providers/global';
 import { ApiProvider } from "../providers/api";
 import { AppVersion } from '@ionic-native/app-version/ngx';
-
+import { DescriptionPageModule } from './pages/description/description.module';
+import {ComponentsModule} from './components/components.module';
 import { UserProvider } from '../providers/users/users';
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule],
+  imports: [BrowserModule, IonicModule.forRoot(), ComponentsModule, AppRoutingModule, HttpClientModule, DescriptionPageModule, ],
   providers: [
     UserProvider,
     StatusBar,

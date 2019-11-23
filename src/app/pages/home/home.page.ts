@@ -32,6 +32,16 @@ export class HomePage {
     })
   }
 
+  onViewDidEnter(){
+    this.globalProv.getStorage('user').then((res)=>{
+      if(res){
+        this.router.navigateByUrl("welcome")
+      }else{
+        console.log("No ha iniciado sesión");
+      }
+    })
+  }
+
 
 
     /**

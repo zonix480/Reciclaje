@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-back-button></ion-back-button>
+        </ion-buttons>
+    <ion-title class="ion-text-center">Agendar</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <form [formGroup]="createForm" novalidate>
+    <ion-card>
+      <ion-card-content>
+        <ion-item>
+          <ion-label>Fecha Año-Mes-dia Hora</ion-label>
+          <ion-datetime formControlName="date" [class.invalid]="!createForm.controls.date.valid && createForm.controls.date.touched" displayFormat="YYYY-MM-DD HH"></ion-datetime>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            Materiales
+          </ion-label>
+          <ion-select  formControlName="materials" [class.invalid]="!createForm.controls.materials.valid && createForm.controls.materials.touched" multiple="true">
+            <ion-select-option *ngFor="let material of materials" value="{{material.id}}">{{material.material}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+            <small>Ingresa cuanto peso tienen los materiales o un aproximado</small>
+        </ion-item>
+        <ion-item>
+            <ion-label>
+              Peso
+            </ion-label>
+            <ion-input  formControlName="size" [class.invalid]="!createForm.controls.size.valid && createForm.controls.size.touched" placeholder="Ingresa cuanto peso tienen los materiales o un aproximado"></ion-input>
+          </ion-item>
+        <ion-button expand="full" (click)="create()">
+            Agendar
+          </ion-button>
+      </ion-card-content>
+    </ion-card>
+  </form>
+
+</ion-content>

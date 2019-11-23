@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-back-button></ion-back-button>
+        </ion-buttons>
+    <ion-title class="ion-text-center">Datos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header class="ion-text-center">
+      <h3>Modificar datos</h3>
+    </ion-card-header>
+    <ion-card-content>
+      <form [formGroup]="updateForm" novalidate>
+      <ion-item>
+        <ion-label>Nombres</ion-label>
+        <ion-input value="{{name}}" type="text" formControlName="name" [class.invalid]="!updateForm.controls.name.valid && updateForm.controls.name.touched"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Apellidos</ion-label>
+        <ion-input value="{{lastname}}" type="text" formControlName="lastname" [class.invalid]="!updateForm.controls.lastname.valid && updateForm.controls.lastname.touched"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Telefono</ion-label>
+        <ion-input value="{{phone}}" type="number" formControlName="phone" [class.invalid]="!updateForm.controls.phone.valid && updateForm.controls.lastname.touched"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Numero de identidad</ion-label>
+        <ion-input value="{{identity_number}}" type="text" formControlName="identity_number" [class.invalid]="!updateForm.controls.identity_number.valid && updateForm.controls.identity_number.touched"></ion-input>
+      </ion-item> 
+      <ion-item>
+        <ion-label>Email</ion-label>
+        <ion-input value="{{email}}" type="email" formControlName="email" [class.invalid]="!updateForm.controls.email.valid && updateForm.controls.email.touched"></ion-input>
+      </ion-item>
+      <ion-item>
+          <ion-label >Estrato</ion-label>
+          <ion-select formControlName="stratum" [class.invalid]="!updateForm.controls.stratum.valid && updateForm.controls.stratum.touched">
+            <ion-select-option value="{{stratum}}" selected>{{stratum}}</ion-select-option>
+            <ion-select-option value="1">1</ion-select-option>
+            <ion-select-option value="2">2</ion-select-option>
+            <ion-select-option value="3">3</ion-select-option>
+            <ion-select-option value="4">4</ion-select-option>
+            <ion-select-option value="5">5</ion-select-option>
+            <ion-select-option value="6">6</ion-select-option>
+          </ion-select>
+        </ion-item>
+      <ion-button expand="full" (click)="updatedata()">Actualizar</ion-button>  
+      </form>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>
