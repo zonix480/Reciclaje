@@ -16,22 +16,27 @@
       <ion-card-content>
         <ion-item>
           <ion-label position="floating">Nombres</ion-label>
+          <small>Ingresa tu nombre (Solo letras)</small>
           <ion-input  type="text" formControlName="name" placeholder="Nombres" [class.invalid]="!registerForm.controls.name.valid && registerForm.controls.name.touched"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label position="floating">Apellidos</ion-label>
+          <small>Ingresa tu nombre (Solo letras)</small>
           <ion-input type="text" formControlName="lastname" placeholder="Apellidos" [class.invalid]="!registerForm.controls.lastname.valid && registerForm.controls.lastname.touched"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label position="floating">Cedula</ion-label>
+          <small>Ingresa tu cedula (Solo números)</small>
           <ion-input  type="number" formControlName="identity_number" placeholder="Cedula" [class.invalid]="!registerForm.controls.identity_number.valid && registerForm.controls.identity_number.touched"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label position="floating">Dirección</ion-label>
+          <small>Ingresa tu dirección</small>
           <ion-input type="text" formControlName="address" placeholder="Dirección" [class.invalid]="!registerForm.controls.address.valid && registerForm.controls.address.touched"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label position="floating">Estrato</ion-label>
+          <small>Selecciona tu estado</small>
           <ion-select formControlName="stratum" [class.invalid]="!registerForm.controls.stratum.valid && registerForm.controls.stratum.touched" placeholder="Selecciona uno ">
             <ion-select-option value="1">1</ion-select-option>
             <ion-select-option value="2">2</ion-select-option>
@@ -43,6 +48,7 @@
         </ion-item>
         <ion-item>
             <ion-label position="floating">Rol</ion-label>
+            <small>Selecciona tu rol</small>
             <ion-select formControlName="rols_id" placeholder="Selecciona uno" [class.invalid]="!registerForm.controls.rols_id.valid && registerForm.controls.rols_id.touched">
               <ion-select-option value="1">Ecologista</ion-select-option>
               <ion-select-option value="2">Reciclador</ion-select-option>
@@ -50,18 +56,22 @@
           </ion-item>
         <ion-item>
           <ion-label position="floating">Celular</ion-label>
+          <small>Ingresa tu número de celular</small>
           <ion-input type="phone" formControlName="phone" placeholder="Celular" [class.invalid]="!registerForm.controls.phone.valid && registerForm.controls.phone.touched"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label position="floating">Correo Electronico</ion-label>
+          <small>Ingresa tu correo electronico</small>
           <ion-input type="email" formControlName="email" placeholder="Email" [class.invalid]="!registerForm.controls.email.valid && registerForm.controls.email.touched"></ion-input>
         </ion-item>
         <ion-item>
+            <small>Ingresa la contrasñea que desees</small>
           <ion-label position="floating">Contraseña</ion-label>
           <ion-input type="password" formControlName="password" placeholder="*********" [class.invalid]="!registerForm.controls.password.valid && registerForm.controls.password.touched"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label position="floating">Repetir Contraseña</ion-label>
+          <small>Repite la contraseña</small>
           <ion-input type="password" formControlName="password2" placeholder="*********" [class.invalid]="!registerForm.controls.password2.valid && registerForm.controls.password2.touched"></ion-input>
         </ion-item>
         <ion-button (click)="registeruser()" expand="full">Registrar</ion-button>

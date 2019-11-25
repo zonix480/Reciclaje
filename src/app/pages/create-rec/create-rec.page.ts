@@ -3,6 +3,7 @@ import {GlobalProvider} from '../../../providers/global';
 import { UserProvider} from "../../../providers/users/users";
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
 
 @Component({
   selector: 'app-create-rec',
@@ -12,7 +13,10 @@ import { Router } from '@angular/router';
 export class CreateRecPage implements OnInit {
   public createForm: FormGroup;
   public materials=[];
+  public lat;
+  public long;
   constructor(public globalProv: GlobalProvider,
+    private geolocation: Geolocation,
     private usersProv: UserProvider,
     public formBuilder: FormBuilder,
     public router: Router) {
@@ -25,6 +29,12 @@ export class CreateRecPage implements OnInit {
 
   ngOnInit() {
     this.getMaterials();
+    this.geolocation.getCurrentPosition().then((resp) => {
+      this.lat=resp.coords.latitude;
+      this.long=resp.coords.longitude;
+     }).catch((error) => {
+       this.globalProv.presentToast("Ocurrio un error debido a permisos");
+     });
   }
 
   create(){
@@ -35,7 +45,9 @@ export class CreateRecPage implements OnInit {
                 date: this.createForm.value.date,
                 id_user: res.id,
                 materials: this.createForm.value.materials,
-                size: this.createForm.value.size
+                size: this.createForm.value.size,
+                lat: this.lat,
+                lng: this.long
             };
         //call provider API
         this.usersProv.setCallPromise('post', request, 'createrecycling', null).then(res => {  

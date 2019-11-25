@@ -4,22 +4,20 @@ import { UserProvider } from "../../../providers/users/users";
 import {DescriptionPage} from '../description/description.page';
 import { Router } from '@angular/router';
 
-
 @Component({
-  selector: 'app-welcome',
-  templateUrl: './welcome.page.html',
-  styleUrls: ['./welcome.page.scss'],
+  selector: 'app-delete-rec',
+  templateUrl: './delete-rec.page.html',
+  styleUrls: ['./delete-rec.page.scss'],
 })
-export class WelcomePage implements OnInit {
-  public rol;
-  public recyclings=[];
+export class DeleteRecPage implements OnInit {
+
   constructor(private globalProv:GlobalProvider, private usersProv: UserProvider, public router:Router) { }
 
   ngOnInit() {
-
-   
   }
-
+  public recyclings=[];
+  public rol;
+  public idUser;
 
   doRefresh(event) {
     console.log('Begin async operation');
@@ -35,12 +33,15 @@ export class WelcomePage implements OnInit {
     }, 2000);
   }
 
+
+  
   ionViewDidEnter(){
     console.log("oninit");
     this.recyclings=[];
     setTimeout(() => {
       this.globalProv.getStorage("user").then(res => {
         this.rol = res.rols_id;   
+        this.idUser = res.id;
       })
       if(this.rol != 1){
         this.getRecyclings();
@@ -48,12 +49,10 @@ export class WelcomePage implements OnInit {
     }, 2000);
   }
 
-
-
-
   getRecyclings() {
     this.globalProv.showLoader();    
-        this.usersProv.setCallObservable('get', 'getrecycling', null).subscribe(
+    this.globalProv.getStorage("user").then(res => {
+        this.usersProv.setCallObservable('get', 'getrecyclingbyuser/'+res.id, null).subscribe(
             (res) => {
               // Si respuesta true
               if(res.success) {
@@ -61,6 +60,7 @@ export class WelcomePage implements OnInit {
                     this.recyclings.push({ 
                         id : res.data[i].id, 
                         state : res.data[i].state,
+                        date:res.data[i].date,
                         lat : res.data[i].lat,
                         lng : res.data[i].lng,
                         name: res.data[i].name,
@@ -74,24 +74,27 @@ export class WelcomePage implements OnInit {
               }
             }
         )
+      });
     }
 
 
-    openDetails(id, lat, lng){
-      this.globalProv.createModal({
-        id:id,
-        lat:lat,
-        lng:lng
-      },DescriptionPage);
+
+    cancel(id){
+      let request = {
+        id_user: this.idUser,
+        id_recycling: id
+      }
+      this.globalProv.showLoader();
+      this.usersProv.setCallPromise('post', request, 'cancelrecycling', null).then(res => {  
+        this.globalProv.hideLoader();     
+        if(!res.success) {
+          this.globalProv.presentToast(res.message);
+        }else if(res.success) {
+          this.globalProv.presentToast("Cancelado Correctamente");
+          this.router.navigateByUrl('/welcome');
+        }
+      }); 
+      
     }
-
-    
-    logOut(){
-      this.globalProv.clearStorage();
-      this.router.navigateByUrl("/home");
-    }
-
-
-  
 
 }

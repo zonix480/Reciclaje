@@ -6,6 +6,9 @@
 </ion-header>
 
 <ion-content *ngIf="rol == 1">
+    <ion-refresher slot="fixed" pullFactor="0.5" pullMin="100" pullMax="200" (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+      </ion-refresher>
   <!-- fab placed in the center of the content with a list on each side -->
   <ion-fab vertical="top" horizontal="start" slot="fixed">
     <ion-fab-button>
@@ -34,7 +37,7 @@
     <ion-item>
       <ion-icon name="close" slot="start"></ion-icon>
       <ion-label>Cancelar Recolección</ion-label>
-      <ion-button fill="outline" slot="end">Ir</ion-button>
+      <ion-button routerLink="delete-rec" fill="outline" slot="end">Ir</ion-button>
     </ion-item>
     <ion-card-content>
       This is content, without any paragraph or header tags,
@@ -45,6 +48,9 @@
 </ion-content>
 
 <ion-content *ngIf="rol == 2">
+    <ion-refresher slot="fixed" pullFactor="0.5" pullMin="100" pullMax="200" (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+      </ion-refresher>
     <!-- fab placed in the center of the content with a list on each side -->
     <ion-fab vertical="top" horizontal="start" slot="fixed">
       <ion-fab-button>
@@ -62,7 +68,7 @@
        <ion-item>
          <ion-icon name="calendar" slot="start"></ion-icon>
          <ion-label>{{recycling.name}}</ion-label>
-         <ion-button fill="outline" (click)="openDetails(recycling.id)" slot="end">Ver</ion-button>
+         <ion-button fill="outline" (click)="openDetails(recycling.id, recycling.lat, recycling.lng)" slot="end">Ver</ion-button>
        </ion-item>
        <ion-card-content>
         La persona {{recycling.name}} {{recycling.lastname}} esta solicitando un reciclador.

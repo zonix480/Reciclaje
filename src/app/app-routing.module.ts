@@ -9,10 +9,8 @@ const routes: Routes = [
   { path: 'description', loadChildren: './pages/description/description.module#DescriptionPageModule' },
   { path: 'welcome/data', loadChildren: './pages/data/data.module#DataPageModule' },
   { path: 'welcome/create-rec', loadChildren: './pages/create-rec/create-rec.module#CreateRecPageModule' },
-  {
-    path: 'create-rec',
-    loadChildren: () => import('./pages/create-rec/create-rec.module').then( m => m.CreateRecPageModule)
-  },
+  { path: 'welcome/delete-rec', loadChildren: './pages/delete-rec/delete-rec.module#DeleteRecPageModule' },
+
 ];
 
 @NgModule({

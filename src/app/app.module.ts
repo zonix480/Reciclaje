@@ -16,6 +16,8 @@ import { AppVersion } from '@ionic-native/app-version/ngx';
 import { DescriptionPageModule } from './pages/description/description.module';
 import {ComponentsModule} from './components/components.module';
 import { UserProvider } from '../providers/users/users';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -24,6 +26,7 @@ import { UserProvider } from '../providers/users/users';
   providers: [
     UserProvider,
     StatusBar,
+    Geolocation,
     SplashScreen,
     GlobalProvider,
     ApiProvider,

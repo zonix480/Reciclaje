@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-back-button></ion-back-button>
+        </ion-buttons>
+    <ion-title class="ion-text-center">Cancelar</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-refresher slot="fixed" pullFactor="0.5" pullMin="100" pullMax="200" (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+      </ion-refresher>
+  <ion-card *ngFor="let recycling of recyclings"  class="mt-card">
+    <ion-item>
+      <ion-icon name="calendar" slot="start"></ion-icon>
+      <ion-label>{{recycling.date}}</ion-label>
+      <ion-button fill="outline" (click)="cancel(recycling.id)" slot="end">Cancelar</ion-button>
+    </ion-item>
+  </ion-card>
+</ion-content>

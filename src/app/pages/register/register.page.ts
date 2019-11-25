@@ -67,6 +67,21 @@ export class RegisterPage implements OnInit {
       }
 
     }else{
+      if(this.registerForm.controls.name.errors){
+        this.globalProv.presentToast("Hay algo malo con tu nombre")
+      }
+      if(this.registerForm.controls.lastname.errors){
+        this.globalProv.presentToast("Hay algo malo con tu apellido")
+      }
+      if(this.registerForm.controls.identity.errors){
+        this.globalProv.presentToast("Hay algo malo con tu cedula")
+      }
+      if(this.registerForm.controls.address.errors){
+        this.globalProv.presentToast("Hay algo malo con tu dirección")
+      }
+      if(this.registerForm.controls.stratum.errors){
+        this.globalProv.presentToast("Hay algo malo con tu dirección")
+      }
         this.globalProv.presentToast("Verifica que todos los campos esten correctos");
     }
 
